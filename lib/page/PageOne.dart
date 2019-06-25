@@ -34,6 +34,8 @@ class PageOneState extends State<PageOne> with AutomaticKeepAliveClientMixin {
       _officialAccountDatas = _jsonModel.data;
     }
 
+    debugPrint("test update");
+
     setState(() {});
   }
 
