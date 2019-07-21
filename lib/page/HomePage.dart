@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_app/page/PageOne.dart';
 import 'package:flutter_app/page/PageTwo.dart';
 import 'package:flutter_app/page/PageThree.dart';
@@ -13,11 +12,10 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  List<String> _title = ["PageOne", "PageTwo", "PageThree", "PageFour"];
+  final List<String> _title = ["Home", "Project", "Website", "PageFour"];
   int _currentIndex = 0;
   PageController _mPageController = new PageController();
 
-  String _homeTitle = "pageOne";
 
   @override
   void initState() {
@@ -28,7 +26,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_homeTitle),
+        title: Text(_title[_currentIndex]),
         centerTitle: true,
       ),
       body: PageView(
@@ -37,26 +35,25 @@ class HomePageState extends State<HomePage> {
         children: <Widget>[PageOne(), PageTwo(), PageThree(), PageFour()],
         onPageChanged: (index) {
           _currentIndex = index;
-          _homeTitle = _title[index];
           setState(() {});
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           new BottomNavigationBarItem(
-              title: Text("item1"),
-              icon: Icon(Icons.ac_unit),
+              title: Text(_title[0]),
+              icon: Icon(Icons.home),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              title: Text("item2"),
-              icon: Icon(Icons.backup),
+              title: Text(_title[1]),
+              icon: Icon(Icons.computer),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              title: Text("item3"),
-              icon: Icon(Icons.cake),
+              title: Text(_title[2]),
+              icon: Icon(Icons.web),
               backgroundColor: Colors.blue),
           BottomNavigationBarItem(
-              title: Text("item4"),
+              title: Text(_title[3]),
               icon: Icon(Icons.dashboard),
               backgroundColor: Colors.blue),
         ],
@@ -64,7 +61,6 @@ class HomePageState extends State<HomePage> {
         onTap: (index) {
           _currentIndex = index;
           _mPageController.jumpToPage(index);
-          _homeTitle = _title[index];
           setState(() {});
         },
       ),

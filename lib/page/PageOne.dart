@@ -20,7 +20,6 @@ class PageOneState extends State<PageOne> with AutomaticKeepAliveClientMixin {
   BannerListEntity _bannerList;
   List<OfficialAccountEntity> _officialAccountDatas = [];
   List<Widget> _bannerWidgets = [];
-  BuildContext _mContext;
 
   void _getJsonContent() async {
     Response response = await Dio().get(Url.GET_OFFICIAL_ACCOUNT_LIST);
@@ -33,8 +32,6 @@ class PageOneState extends State<PageOne> with AutomaticKeepAliveClientMixin {
     if (_jsonModel != null) {
       _officialAccountDatas = _jsonModel.data;
     }
-
-    debugPrint("test update");
 
     setState(() {});
   }
@@ -91,11 +88,7 @@ class PageOneState extends State<PageOne> with AutomaticKeepAliveClientMixin {
                 child: Text(_officialAccountDatas[index].name),
               ),
             ),
-            onTap: () {
-              Toast.show(
-                  "name is ${_officialAccountDatas[index].name} ", context,
-                  duration: Toast.LENGTH_SHORT, gravity: Toast.CENTER);
-            },
+            onTap: () {},
           );
         }
       },
