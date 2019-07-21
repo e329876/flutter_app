@@ -65,7 +65,6 @@ class PageOneState extends State<PageOne> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    _mContext = context;
     _getBanners();
 
     return Scaffold(
