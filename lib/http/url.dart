@@ -13,4 +13,7 @@ class Url {
 
   static const GET_PROJECT_CATEGORY =
       "https://www.wanandroid.com/project/tree/json";
+
+  static const GET_EXACT_PROJECT_LIST =
+      "https://www.wanandroid.com/project/list/1/json";
 }

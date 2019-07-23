@@ -21,6 +21,7 @@ class ProjectCategoryEntity {
   int parentChapterId;
   bool userControlSetTop;
   int visible;
+  int id;
 
   ProjectCategoryEntity(
       {this.courseId,
@@ -28,7 +29,8 @@ class ProjectCategoryEntity {
       this.order,
       this.parentChapterId,
       this.userControlSetTop,
-      this.visible});
+      this.visible,
+      this.id});
 
   factory ProjectCategoryEntity.fromJson(Map<String, dynamic> map) =>
       _$ProjectCategoryEntityFromJson(map);

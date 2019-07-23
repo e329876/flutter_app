@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter_app/http/url.dart';
 import 'package:flutter_app/model/project_catecory_list_entity.dart';
 import 'dart:math';
-import 'package:toast/toast.dart';
+import 'exact_project_list_page.dart';
 
 class PageTwo extends StatefulWidget {
   @override
@@ -35,7 +35,7 @@ class PageTwoState extends State<PageTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: categoryList.length == 0
+      body: categoryList.isEmpty
           ? Container(
               margin: EdgeInsets.only(top: 20),
               child: Align(
@@ -55,7 +55,12 @@ class PageTwoState extends State<PageTwo> {
                     backgroundColor: randomColorList[Random().nextInt(6)],
                   ),
                   onPressed: () {
-                    //todo 路由跳转到具体分类的项目列表（待实现）
+                    print("click id is ${entity.id}");
+
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (buildContext) {
+                      return ExactProjectListPage(entity.id);
+                    }));
                   },
                 );
               }).toList(),
@@ -68,6 +73,8 @@ class PageTwoState extends State<PageTwo> {
 
     ProjectCategoryListEntity entity = ProjectCategoryListEntity.fromJson(
         json.decode(jsonEncode(response.data)));
+
+    print(response.data);
 
     categoryList = entity?.data;
 

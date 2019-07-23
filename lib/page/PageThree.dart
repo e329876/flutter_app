@@ -4,12 +4,11 @@ import 'package:dio/dio.dart';
 import 'dart:convert';
 import 'package:flutter_app/http/url.dart';
 
-class PageThree extends StatefulWidget{
+class PageThree extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return PageThreeState();
   }
-
 }
 
 class PageThreeState extends State<PageThree> {
@@ -24,25 +23,25 @@ class PageThreeState extends State<PageThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: websiteList.length > 0
+      body: websiteList.isEmpty
           ? RefreshIndicator(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              if (index.isOdd) {
-                return Divider();
-              }
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  if (index.isOdd) {
+                    return Divider();
+                  }
 
-              return Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(websiteList[index].name),
-              );
-            },
-            itemCount: websiteList.length,
-          ),
-          onRefresh: _loadData)
+                  return Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(websiteList[index].name),
+                  );
+                },
+                itemCount: websiteList.length,
+              ),
+              onRefresh: _loadData)
           : Center(
-        child: Text("Loading..."),
-      ),
+              child: Text("Loading..."),
+            ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
@@ -51,6 +50,9 @@ class PageThreeState extends State<PageThree> {
   }
 
   Future<Null> _loadData() async {
+    //延迟执行
+    await new Future.delayed(const Duration(seconds: 1));
+
     websiteList.clear();
     _getUsefulWebsiteList();
 
@@ -70,4 +72,3 @@ class PageThreeState extends State<PageThree> {
     });
   }
 }
-

@@ -34,7 +34,8 @@ ProjectCategoryEntity _$ProjectCategoryEntityFromJson(
       order: json['order'] as int,
       parentChapterId: json['parentChapterId'] as int,
       userControlSetTop: json['userControlSetTop'] as bool,
-      visible: json['visible'] as int);
+      visible: json['visible'] as int,
+      id: json['id'] as int);
 }
 
 Map<String, dynamic> _$ProjectCategoryEntityToJson(
@@ -45,5 +46,6 @@ Map<String, dynamic> _$ProjectCategoryEntityToJson(
       'order': instance.order,
       'parentChapterId': instance.parentChapterId,
       'userControlSetTop': instance.userControlSetTop,
-      'visible': instance.visible
+      'visible': instance.visible,
+      'id': instance.id
     };
