@@ -15,5 +15,9 @@ class Url {
       "https://www.wanandroid.com/project/tree/json";
 
   static const GET_EXACT_PROJECT_LIST =
-      "https://www.wanandroid.com/project/list/1/json";
+      "https://www.wanandroid.com/project/list/";
+
+  static String buildPageUrl(String url, int page) {
+    return url + page.toString() + JSON_SUFFIX;
+  }
 }

@@ -23,7 +23,7 @@ class PageThreeState extends State<PageThree> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: websiteList.isEmpty
+      body: websiteList.isNotEmpty
           ? RefreshIndicator(
               child: ListView.builder(
                 itemBuilder: (context, index) {
@@ -67,8 +67,9 @@ class PageThreeState extends State<PageThree> {
     UsefulWebsiteListEntity entity = UsefulWebsiteListEntity.fromJson(
         json.decode(jsonEncode(response.data)));
 
+    websiteList = entity.data;
+
     setState(() {
-      websiteList = entity.data;
     });
   }
 }
