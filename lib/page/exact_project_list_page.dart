@@ -6,6 +6,7 @@ import 'package:flutter_app/model/project_detail_list_entity.dart';
 import 'package:flutter_app/http/http_client.dart';
 
 import 'package:dio/dio.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class ExactProjectListPage extends StatefulWidget {
   final int id;
@@ -117,7 +118,17 @@ class ExactProjectListPageState extends State<ExactProjectListPage> {
         ],
       ),
       onTap: () {
-        Navigator.of(context).push(new MaterialPageRoute(builder: null));
+        Navigator.of(context).push(new MaterialPageRoute(
+            builder: (context) => WebviewScaffold(
+                  url: entity.link,
+                  appBar: AppBar(
+                    title: Text(
+                      entity.title,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    centerTitle: true,
+                  ),
+                )));
       },
     );
   }
